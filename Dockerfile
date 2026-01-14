@@ -15,5 +15,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the code
 COPY . .
 
-# Use shell form for proper variable expansion
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Make start script executable
+RUN chmod +x start.sh
+
+# Run via bash script
+CMD ["./start.sh"]
